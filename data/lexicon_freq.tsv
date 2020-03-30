@@ -1,0 +1,11 @@
+search.regex	match	forms	n
+\bsenang\b	senang	root	14531
+\bbahagia\b	bahagia	root	6178
+\bgembira\b	gembira	root	4387
+\bceria\b	ceria	root	880
+\briang\b	riang	root	528
+\bkebahagiaan\b	kebahagiaan	nominalised *ke- -an*	3228
+\bkesenangan\b	kesenangan	nominalised *ke- -an*	1293
+\bkegembiraan\b	kegembiraan	nominalised *ke- -an*	1211
+\bkeceriaan\b	keceriaan	nominalised *ke- -an*	265
+\bkeriangan\b	keriangan	nominalised *ke- -an*	60
