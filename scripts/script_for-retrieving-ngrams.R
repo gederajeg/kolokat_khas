@@ -23,6 +23,8 @@ coll_cxn_ngram <- function(sent_dbase, colloc_rgx='regex for colloc', cxn_rgx='r
     # maintain tagging
     filtered_dbase <- colloc_pattern %>%
       tibble(COLLOC_NGRAM = .) %>%
+      mutate(COLLOC_NGRAM = str_replace_all(COLLOC_NGRAM, "<", "\\\\<"),
+             COLLOC_NGRAM = str_replace_all(COLLOC_NGRAM, ">", "\\\\>")) %>% 
       bind_cols(filtered_dbase, .)
   } else {
     # strip-off tagging
