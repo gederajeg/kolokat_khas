@@ -1,0 +1,746 @@
+---
+title: "R Notebook untuk *Linguistik Korpus Kuantitatif dan Kajian Semantik Leksikal Sinonim Emosi Bahasa Indonesia*"
+author: 'Gede Primahadi Wijaya <span style = "font-variant:small-caps;">Rajeg</span> <a itemprop="sameAs" content="https://orcid.org/0000-0002-2047-8621" href="https://orcid.org/0000-0002-2047-8621" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon"></a>'
+output:
+  html_notebook: default
+  word_document: default
+  bookdown::word_document2:
+    fig_caption: true
+    fig_width: 6
+    df_print: kable
+bibliography: "daftarpustaka.bib"
+csl: "apa-old-doi-prefix.csl"
+link-citations: yes
+---
+
+Naskah preprint: [![DOI](https://img.shields.io/badge/doi-10.6084/m9.figshare.12012369-blue.svg?style=flat&labelColor=gainsboro&logoWidth=40&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAFAAAAAZCAYAAACmRqkJAAAKi0lEQVR4Ae3ZaVBUV97H8evuE0EfH32MmkcfoyAuGjXKgkvMaFRAFuiloemWvRuEXlgEBREXBYJiXAQUFeKocUniQiKogAJhQWwWENDEjLNYvjFLzUzNkplEZb5kTme6nCRjKlOpSZlb9SmL2%2Ffcuv3re87%2FnKP0TYfOcslqPMbt63xBKuh09MTxgi7HKT1Sj1TvKp%2BMkZB6%2FXT8c4AjUYPyVdfb7Qs6HTIJ8EHe7Ul%2B152CphDabRQ0uMr7%2FRQgh%2B8qU6%2FBiPDVGv0jq0uGE94b0ZZ3j%2B25MTetoMsh%2FWD91OBqT9%2Fsehd5EqGV17nKMzTqOHvaRMMLEp7qACfinq%2FW1BBx5ZxB13x5X3Jr1v%2Fz9pUcaHU63PiicjrhvXfNRbY1Th49Q6Y1vu6zyqSjzX3aVIgf4OkKToxhgxpd5OMzV0bYE4CRN1Chu34pnTfwnV03FiTlfzDRXBHo6dfgIq8sX6ByV6vjthGc0UdrrPPVGFQBxlSjzJQWENVUZkebceiLpyM8IZSx7O7Zl4JivUNMZX5h8Rt4%2B2L0llKfgu6JKa%2BXvpB5bZ48%2Ba3F6lil2pDkE2rODzCsU0VUnNFHNZQqdS3lx3Utl%2FMILQcfYt5TEeC1GSprgAq0XlgYGLQyxJTlr0uK0DVX7E5s2ZtOgHvLw5fLK9xVmcqguEj%2F2LXbwsvPBkZZKl4j5NcIKinaUsLbejFWZ7m8Do2cmwnb4cFqArRwx3TEYzi%2Bz7DTD0uhxnj8cAEWWUZK%2BTcdhh4pmTWUsW01Y1uCUmNY7Rtqzo5svJSS0poVXtg6yVj7sn9qunek3j8xPVXXeMFoaDkev6lDF7ene7Y5r2taNAXmEBXaP69zevaOjuUeeZ0zhzJuPsM5CdYvOhZVqBMhBqIVDt8zwGdQjR4of9AA%2BXJjUFpww7GodnHAQca4srDAWCXjW3pETal%2BbfumuOLKqSm17vIQtWr1Uu3JYy6JbXuXFbRN1R8pm5byxtG5CcdOz9EUVc7I5IeQEWQ7wWVwzwrsRn%2BbAFeiCxNsKv5Y9P03BFgjAlT90AGOQy2T47fObl00ocFZHl%2B2UGXw0RjzNUWHTPFthckHWh18al8KsGuaFigVVzlKuY%2BG9z37qvuoGlelpsJVldrgrFjbOE%2BeWe8uW18W84qCqc4s7tmCIgzI75hs%2FaJKNFu7rF%2BIIIhr%2BmIQ%2Btn8LQkDMQOeWAYnDHgsQI3NNU7W9j4h5t72o%2FEyvLEQ%2F%2Bu7ymzbOxbCAeOxAgtghz6YgOVYiufEOUlqu0M37ho%2BYn%2FnpJT8bsejVSt90uqdFdlGmV7hF7cuWXetNCShLX%2BI3nKhN%2ByvCs%2Bs6GQpWB33fzKNQR%2BqWr022yvc94q7spBCY%2Bbzkou6ZfJNPf89ZN%2FdidYHnIsKfIzjCMIc7MAwSJiMPFxGMcKQixGwx07R%2FiEe4CNsxFCbAJvwifj8LkIgYRHa8Lm47jNY8AokmMS5NryPh%2FijOB%2BOX4h7foEuyPHlisMtylJpzu1YspkQ36YbLqnx8F1X4abaqmYs9DGmLlrk4CE9XlHlKZskxfpt%2FUJLzyhV23dG%2BITF72fqo9njEaokwIu8lSbG1N4wx273CrP%2B%2BjniQVZhGrzQjlEioFIRcjDM6MIdjBVtHogvl4W9qIX8sTfwU5SgU%2FzdhdGYLcJ9BzvRID6vgx2SxN8PUI9KnIEWH4n7FuIo%2FoRfYV5vMMV4wHRFs%2BvG%2FKl05ZrDVdP11T7eulK3oNQcz%2FAXcj3DpMePjO44KetDL2lDh%2FmV1S3nNoeWnJb7RSXmMJl%2BI0GmH13rKs8lvEdQwfoWKmCxdmGbAEdgAW5jFiQhBb8WXSYTPSjGCBHaMPR5LMANkOCM%2B%2FgD3MS5Z8W1ElzwW3HNJCSI9tcw2ub%2BO8T5LPTBQBy1nusNcB7ztximI1sIsSSzXb04v3vyusJmx63nMufHXlV6LvpEShDd9x%2FHFYWXVPuSX7%2FD7zmpcjuWRupbyvaHnj8Z7BNsUFCArm70iTRcd5bFEN7oxwJs%2FpoA%2FwfBaLJ2Z2EFbmEsNKL7fYYPUI9DIqj%2Fsgkw0CasW%2BL6RbBDFI7gTZSKzz6Gk02AJ23G3QF4xybYU8INce6s5CJNlTyXhYwKv%2FRWMiEeimquzIhrPpGzuSNCsbvLec2%2Brpmh2e0yu%2FxOp96wv6p8X0xeIZW5Bo2%2F6ucdvb%2FdMWVDm8lX11pRpD16OJ6VyZsrQ8yK%2BVFJ9h4UhwEHDj5JgGE23UkSfoZujMMzSESNCPBT9KAFjqi2rcIYZRPgYmzDQ9xDLSz4%2FGsCPIE%2BNkWrTJy%2FhRrRthpVyJJExbnmG2I%2B6x%2BT%2FHxYyQkzQfJGlufpWy6bYlvPUEgu%2BHlHJA5boo7rE3blnBR7r6mv%2BvCBMYEag%2Faqsyr1%2BIk5a%2Fd2z9zGBDpZ31qulCWk9443Hfg5BuJJAgxAG0ZBEmS4DZ7RKIliMVi0d8UvRUCeuPoNAf4Z%2FmgV13pAwiwR3iffFKBQJM5noB%2F6Y5h45v7Wwf0cDtD1DlMIeiugWmZOy5Cv3RgjX7%2FF4GdMXasOjgurmqdafqpojltml9IjvOJ8NMu9lNL5gQmXdMu0BTefz8loMyoJvivs3VMZvhpjqaig%2FZ8gwJGYIsIKRh%2FY4wh%2Bg%2FGQoxYbREgZ%2BB3uww1V3xKgN%2BrwCNtF4Pvx8NveQCEYX%2BAukhCIYuHZLy%2FyDjHbJQfo7PTK1dEBWqPBX2vS%2B2hNW1XquDURypiwXStCjVWuyrSKQC%2FdoUaHtOT2HENoyal4b40x7rK7ylip9NIV3Jy0P6fD24fl3Ra6uoe3PNqOH2Pw3x%2FC8K8CHIU%2BIpQ7OI8yNOJ9TMJO%2FAU9Nn6PjRiGmm%2FpwgsRLQpKjwjuU%2Fz1CQK0R4G4T4%2FwCHWYKlmcA6xr4SA2EzobXeUa9vh21LgpdKxK8hqd5RsaXWS7S9YvlhU2O7ya3ekXrm%2B9lK3KzFH6a4y5V92Ve5hkM4d02EShMestZekE2IxZX7MWdkAgBtmsi9U2lXEwliAOK%2BGLTowThWIZkrEVSSKYgegPOUxwtFmdaBGLsRgg2qeKtosQDh2GYzbisUIEaPvcQ8T5VGzCKowBk2I3mTVALe4wd4tumKcoaZirSKte4RtVrvXwLrw%2BJXV%2F18Ts3BtLEmOaS0yRtRdMfpGJhTKNMbDJWR5V7eEbUNDtcIQAd1PJMwnuJl6E9KQHY7AAHkzQoBkj8B%2B%2FpTWQ4Maezne1P3x1esLBuqmB%2BbccNhJMGetbM%2BGZIi1V%2FoRyOXB77sKVWuPmrd4RBvYQm9ihVue%2F7xDPGljB50MoJmO%2By36gCGsQovCyCGwOarD9R7PLLXZOJjKZvse%2FDQQSvffG7F1rWrZPiLKUX2DPr1hbfHAKb0kDBSeTed5MQj94Pn1xBMvA%2B2IDYTAkcXzXANPRjHq04ACeFeH9aAIcBC3LOq%2FY5pPDeYtO4yRTmzUhbx9LozCEea8ybaHoxDNmVtPltxSVzxhCm3Asg4Tvs683Aa5wwkD8qP9XbgQqUbb6Tp09U5Os3rWiV4jZv2OuvxPdvht70RfST8fjATZd7P33OYzxZ%2FdF7FwcgqPU0yMR2vMYDulpDfBvw%2BGCdBePpq8AAAAASUVORK5CYII%3D)](http://dx.doi.org/10.6084/m9.figshare.12012369) [@Rajeg2020]
+
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
+
+[cc-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/lisensi-CC%20BY--NC--SA%204.0-informational.svg
+
+Makalah sedang menjalani proses "tinjauan sejawat"/*peer-review* di jurnal [*Linguistik Indonesia*](http://ojs.linguistik-indonesia.org/index.php/linguistik_indonesia)
+
+```{r, message = FALSE, warning = FALSE, eval = FALSE}
+library(remotes) # if 'remotes' package is not available, install it by typing: install.packages("remotes")
+remotes::install_github("gederajeg/happyr")
+```
+
+
+# Kode analisis MDCA
+
+Nukilan kode berikut menunjukkan penghitungan *Multiple Distinctive Collexeme Analysis* menggunakan fungsi `mdca()` dan data kolokat dari modul R *happyr* [@happyr2019]. Perlu dicatat bahwa pengguna dan pembaca perlu juga menginstal modul *happyr* (lihat nukilan kode sebelumnya) dan modul *tidyverse* [@wickham_welcome_2019] untuk dapat menjalankan kode analisis berikut.
+
+```{r mdca-for-collocates, message = FALSE, warning = FALSE}
+library(happyr)
+library(tidyverse)
+source("scripts/script_for-retrieving-ngrams.R")
+knitr::opts_chunk$set(fig.width=6, 
+                      fig.asp=0.618,
+                      dpi=300)
+mdca_colloc <- mdca(df = colloc_input_data,
+                    cxn_var = "synonyms",
+                    coll_var = "collocates",
+                    correct_holm = TRUE,
+                    concise_output = FALSE,
+                    already_count_table = FALSE,
+                    assocstr_digits = 3L)
+
+mdca_colloc_concise <- mdca(df = colloc_input_data,
+                    cxn_var = "synonyms",
+                    coll_var = "collocates",
+                    correct_holm = TRUE,
+                    concise_output = TRUE,
+                    already_count_table = FALSE,
+                    assocstr_digits = 3L)
+```
+
+## Penjelasan terkait "Analisis Koleksem Khas Berganda"
+
+Bagian ini memaparkan landasan kuantitatif dari "Analisis Koleksem Khas Berganda" (*Multiple Distinctive Collexeme Analysis*), dan kode pemrograman R yang digunakan untuk data kuantitatif dalam pemaparan tersebut. Perhatikan Tabel [\@ref(tab:contoh-mdca)](#contoh-mdca).
+
+
+```{r contoh-mdca, message = FALSE, warning = FALSE}
+mdca_example <- subset(mdca_colloc_concise, collocates == "anak-anak")
+mdca_example_long <- subset(mdca_colloc, collocates == "anak-anak")
+colnames(mdca_example)[c(1:2, 8)] <- c("kolokat", "sinonim", "signif")
+mdca_example$exp <- round(mdca_example$exp, 3)
+knitr::kable(mdca_example, row.names = TRUE, caption = "Luaran MDCA untuk *anak-anak* sebagai kolokat khas.")
+```
+
+
+Frekuensi kemunculan riil *anak-anak* dalam lingkup empat kata di kiri dan kanan *keceriaan* di dalam korpus (lihat bagian DATA DAN METODOLOGI) adalah `r pull(mdca_example[mdca_example$sinonim=="keceriaan", "n"])` kali. Selain frekuensi riil, Uji Binomial juga memerlukan frekuensi yang diharapkan muncul atas dasar distribusi acak untuk *anak-anak* dengan *keceriaan*; frekuensi ini disebut **frekuensi harapan** (*expected frequency*) [@rajeg_pemahaman_2019, 21-22]. Untuk kasus kali ini, frekuensi harapan dihitung dengan cara (i) mengalikan frekuensi *keceriaan* di dalam data (yaitu `r pull(mdca_example_long[mdca_example_long$synonyms=="keceriaan", "cxn_sum"])`) dengan total frekuensi kemunculan *anak-anak* dengan semua sinonim (yaitu `r pull(mdca_example_long[mdca_example_long$synonyms=="keceriaan", "colloc_sum"])`), kemudian (ii) membagi hasil perkalian tersebut dengan total keseluruhan data kolokasi empat kata di kiri dan kanan kesepuluh sinonim (yaitu, `r unique(pull(mdca_example_long, dbase_token))`). Jadi, frekuensi harapan untuk kemunculan *anak-anak* dengan *keceriaan* adalah (`r pull(mdca_example_long[mdca_example_long$synonyms=="keceriaan", "cxn_sum"])` * `r pull(mdca_example_long[mdca_example_long$synonyms=="keceriaan", "colloc_sum"])`)/`r unique(pull(mdca_example_long, dbase_token))` = `r paste(round(pull(filter(mdca_example_long, synonyms == "keceriaan"), exp), 3))`.
+
+Selisih antara frekuensi riil dan harapan digunakan untuk menentukan arah asosiasi antara suatu kolokat dengan sinonim yang dimaksud. Apabila selisihnya positif (yaitu frekuensi riil lebih tinggi dari frekuensi harapan), maka kolokat tersebut berasosiasi positif dengan, atau bersifat khas/distingtif untuk, sinonim yang dikaji; sebaliknya, selisih negatif mengindikasikan disosiasi antara kolokat dan sinonim [@herbst_collostructional_2014, 227; @hoffmann_collostructional_2013]. Perbandingan frekuensi riil dan harapan untuk *anak-anak* dan *keceriaan* (baris kelima pada Tabel 1) menunjukkan asosiasi positif, karena frekuensi riilnya (kolom **n**) lebih tinggi dari frekuensi harapannya (kolom **exp**):`r pull(filter(mdca_example_long, synonyms == "keceriaan"), n)` > `r round(pull(filter(mdca_example_long, synonyms == "keceriaan"), exp), 3)`. Asosiasi negatif, di antaranya, ditunjukkan oleh *anak-anak* dan *kebahagiaan* (baris keempat pada Tabel 1).
+
+Selain frekuensi riil dan harapan, Uji Binomial juga memerlukan probabilitas *a priori* (probabilitas praanggapan), yang menunjukkan bahwa apabila *anak-anak* muncul sebagai kolokat dalam rentang empat kata di kiri dan kanan sinonim KEBAHAGIAAN, maka *anak-anak* akan muncul dengan *keceriaan* [@hilpert_distinctive_2006, 247]. Probabilitas ini dihitung dengan cara membagi (i) frekuensi harapan *anak-anak* dengan *keceriaan* (yaitu `r paste(round(pull(filter(mdca_example_long, synonyms == "keceriaan"), exp), 3))`) dengan (ii) total frekuensi kemunculan *anak-anak* dengan semua sinonim (yaitu `r pull(mdca_example_long[mdca_example_long$synonyms=="keceriaan", "colloc_sum"])`); jadi, `r paste(round(pull(filter(mdca_example_long, synonyms == "keceriaan"), exp), 3))`/`r pull(mdca_example_long[mdca_example_long$synonyms=="keceriaan", "colloc_sum"])` = `r round(pull(mdca_example_long[mdca_example_long$synonyms=="keceriaan", "exp_prob"]), 4)`.
+
+Selanjutnya, Uji Binomial akan menentukan signifikansi statistik dari asosiasi antara kolokat dan sinonim: apakah secara signifikansi statistik suatu kolokat muncul lebih sering atau jarang dari yang diharapkan atas dasar suatu kebetulan (distribusi acak) [bdk. @hilpert_distinctive_2006, 247]. Nukilan kode pemrograman R berikut adalah cara menghitung *p-value* dari Uji Binomial apabila frekuensi riil suatu kolokasi lebih tinggi dari frekuensi harapan. 
+
+```{r dbinom-positif}
+binom.test(x = 91, # frekuensi kemunculan riil "anak-anak" dengan "keceriaan"
+           n = 147, # total frekuensi "anak-anak" sebagai kolokat pada data
+           p = 0.1300868, # probabilitas *a priori*
+           alternative = "greater" # karena frek. riil > frek. harapan"
+           )$p.value # keluarkan hanya p-value dari Uji Binomial-nya.
+
+# kode alternatif yang menghasilkan p-value sama adalah sebagai berikut:
+sum(dbinom(91:147, 147, 0.1300868))
+```
+
+
+Nilai *p-value* menunjukkan probabilitas frekuensi riil *anak-anak* dengan *keceriaan* yang diamati, mengingat hipotesis kosong (*null hypothesis*) [lihat @rajeg_pemahaman_2019, 19-20] menyatakan bahwa seharusnya *keceriaan* dan sinonim yang lain memiliki distribusi yang setara untuk berkolokasi dengan *anak-anak* (dapat dilihat pada Tabel 1 adanya ketimpangan distribusi untuk *anak-anak* terhadap masing-masing sinonim). Semakin kecil *p-value* (biasanya di bawah 0.05), semakin kuat asosiasi/kekhasan atau disosiasi/ketidakhasan antara suatu kolokat dengan sinonim yang dikaji. Probabilitas yang dihasilkan dari Uji Binomial di atas sangatlah kecil (lihat kolom **p_binimial** pada Tabel 1)^[Representasi berbeda dari `r sum(dbinom(91:147, 147, 0.1300868))` adalah `r format(sum(dbinom(91:147, 147, 0.1300868)), scientific = FALSE)`]; mengingat frekuensi riil *anak-anak* dengan *keceriaan* lebih tinggi dari yang diharapkan, dan kecilnya probabilitas Uji Binomial mengindikasikan asosiasi positif dan khas yang signifikan (tidak bisa dianggap sebagai suatu kebetulan) antara *anak-anak* dan *keceriaan*. 
+
+Berikut adalah nukilan kode R untuk Uji Binomial apabila frekuensi riil lebih kecil dari frekuensi harapan, seperti halnya antara *anak-anak* dan *kebahagiaan*.
+
+```{r dbinom-negatif}
+binom.test(x = 16, # frekuensi kemunculan riil "anak-anak" dengan "kebahagiaan"
+           n = 147, # total frekuensi "anak-anak" sebagai kolokat pada data
+           p = 0.3847226, # probabilitas *a priori*
+           alternative = "less" # karena frek. riil < frek. harapan
+           )$p.value # keluarkan hanya p-value dari Uji Binomial-nya.
+
+# kode alternatif yang menghasilkan p-value sama adalah sebagai berikut:
+sum(dbinom(0:16, 147, 0.3847226))
+```
+
+Hasil di atas menunjukkan bahwa bukanlah suatu kebetulan bahwa *anak-anak* memiliki disosiasi dengan *kebahagiaan*. Dengan kata lain, *anak-anak* muncul secara signifikan lebih jarang dari yang diharapkan sebagai kolokat dari *kebahagiaan*.
+
+Untuk kemudahan intuitif dalam memahami *p-value* sebagai derajat kekhasan suatu kolokat, CollAna menggunakan nilai logaritma10 dari *p-value* yang dihasilkan, dan menyebut gubahan nilai tesebut dengan daya asosiasi (*association strength*)/kekhasan (*distinctiveness*) (perhatikan kolom **assocstr** pada Tabel 1) [@stefanowitsch_covarying_2005, 7; @hilpert_distinctive_2006, 247]. Nukilan kode R berikut mencontohkan pengubahan *p-value* dalam bentuk nilai logaritma10.
+
+```{r log-transformation-example}
+# untuk p-value jika frek.riil > frek.harapan (data "anak-anak" dan "keceriaan")
+-log10(x = 2.003129e-43)
+
+# untuk p-value jika frek.riil < frek.harapan (data "anak-anak" dan "kebahagiaan")
+log10(x = 6.476552e-14)
+```
+
+Dapat diperhatikan bahwa kekhasan akan ditunjukkan oleh nilai daya asosiasi yang positif (`r round(-log10(x = 2.003129e-43), 3)`), sedangkan ketidakkhasan akan ditunjukkan oleh nilai daya asosiasi yang negatif (`r round(log10(x = 6.476552e-14), 3)`). Semakin tinggi nilai daya asosiasi, semakin kuat asosiasi antara suatu kolokat dan sinonim. Sebaliknya, semakin rendahnya nilai daya asosiasi mengindikasikan lemahnya daya asosiasi antara suatu kolokat dan sinonim.
+
+Penghitungan Uji Binomial untuk MDCA di atas dilakukan untuk semua tipe kolokat yang muncul dengan sinonim yang dikaji; dalam hal ini, terdapat `r mdca_colloc %>% pull(collocates) %>% unique() %>% length()` tipe kolokat pada basis data. Penghitungan manual satu per satu akan tidak efektif. Untuk itu, dirancang fungsi pemrograman R yang dapat secara otomatis melakukan MDCA untuk seluruh kolokat yang ada. Fungsi ini disebut `mdca()` dan tersedia secara terbuka bersama dengan keseluruhan data dalam modul R [@rcore2019] `happyr` [@happyr2019]. Selanjutnya, masing-masing kolokat dapat dirangking berdasarkan besaran daya asosiasi/kekhasannya terhadap masing-masing sinonim. Bagian HASIL DAN PEMBAHASAN akan menampilkan hasil MDCA untuk sinonim yang merupakan bentuk turunan dengan nominalisasi *ke- -an* (lihat catatan akhir 1).
+
+
+# DATA DAN METODOLOGI
+
+Berikut adalah ukuran Korpus Leipzig yang digunakan dalam penelitian ini.
+
+
+
+```{r leipzig-size-print, message = FALSE, warning = FALSE, echo = TRUE}
+corpussize <- readr::read_tsv("data/leipzig_size.tsv")
+corpussize %>% 
+  rename(`Nama berkas korpus`=Corpus,
+         `Ukuran (berdasarkan kata)`=Size_print) %>%
+  mutate(`Ukuran (berdasarkan kata)`=format(`Ukuran (berdasarkan kata)`, big.mark = ",")) %>% 
+  knitr::kable(caption = "Berkas Korpus Leipzig Bahasa Indonesia yang digunakan pada makalah ini.", row.names = TRUE)
+```
+
+Ukuran kesepuluh berkas Korpus Leipzig tersebut berjumlah `r prettyNum(sum(corpussize$Size_print), big.mark = ",")` juta kata.
+
+Berikut ini adalah kode untuk data frekuensi leksikon dalam Korpus Leipzig Bahasa Indonesia.
+
+
+```{r lexicon-size-print, echo = TRUE, message = FALSE, warning = FALSE}
+lexiconfreq <- readr::read_tsv("data/lexicon_freq.tsv")
+lexiconfreq %>%
+  mutate(search.regex = str_replace_all(search.regex, "\\\\b", "`\\\\b`"),
+         search.regex = str_replace_all(search.regex, "^(`\\\\b`)", "\\1(?i)"),
+         forms = str_replace_all(forms, "nominalised", "nominalisasi"),
+         forms = str_replace_all(forms, "root", "akar"),
+         match = str_c("*", match, "*"),
+         n = prettyNum(n, big.mark = ",")) %>%
+  rename(`Pola pencarian`=search.regex, Leksikon=match, `Bentuk morfologis`=forms, N=n) %>%
+  knitr::kable(caption="Frekuensi kemunculan sinonim <span style='font-variant:small-caps;'>kebahagiaan</span> di Korpus Leipzig Bahasa Indonesia.", row.names = TRUE)
+```
+
+
+```{r full-sentence-data, message = FALSE, warning = FALSE}
+full_sent_root <- readr::read_tsv("data/full_sentence_root.tsv")
+full_sent_nominalised <- readr::read_tsv("data/full_sentence_nominalised.tsv")
+```
+
+
+```{r collocates-database, message = FALSE, warning = FALSE}
+colldb_nominalised <- readr::read_tsv("data/colloc_database_nominalised.tsv")
+colldb_root <- readr::read_tsv("data/colloc_database_root_nominal.tsv")
+colldb_snippet <- readr::read_tsv("data/colldb_snippet.tsv")
+# knitr::kable(dplyr::sample_n(colldb_snippet, 5), row.names = TRUE, caption = "Nukilan basis data kolokat")
+sample_n(colldb_snippet, 5)
+```
+
+
+
+# Kolokat khas untuk *kebahagiaan*
+
+Tabel [\@ref(tab:kolokat-kebahagiaan)](#kolokat-kebahagiaan) berikut menampilkan 20 kolokat khas teratas yang kuat berasosiasi dengan *kebahagiaan*.
+
+
+```{r kolokat-kebahagiaan, echo = TRUE}
+happyr::mdca_attr(mdca_colloc_concise, cxn_type = "^kebahagiaan$") %>% 
+  dplyr::top_n(n = 20, wt = assocstr) %>% 
+  dplyr::select(-synonyms) %>%
+  dplyr::mutate(exp = round(exp, 3), 
+                collocates = paste("*", collocates, "*", sep = "")) %>%
+  dplyr::rename(kolokat = collocates,
+                signif = dec) %>% 
+  knitr::kable(caption="Daftar 20 kolokat khas teratas untuk *kebahagiaan* di Korpus Leipzig Bahasa Indonesia.", row.names = TRUE)
+```
+
+
+
+
+
+```{r ngrams-kebahagiaan}
+kesejahteraan <- coll_cxn_ngram(full_sent_nominalised, "^kesejahteraan$", "^kebahagiaan$", COLLOCATES, WORDS)
+
+dunia <- coll_cxn_ngram(full_sent_nominalised, "^dunia$", "^kebahagiaan$", COLLOCATES, WORDS)
+
+tangga <- coll_cxn_ngram(full_sent_nominalised, "^tangga$", "^kebahagiaan$", COLLOCATES, WORDS)
+
+umat <- coll_cxn_ngram(full_sent_nominalised, "^umat$", "^kebahagiaan$", COLLOCATES, WORDS)
+
+manusia <- coll_cxn_ngram(full_sent_nominalised, "^manusia$", "^kebahagiaan$", COLLOCATES, WORDS)
+
+orang <- coll_cxn_ngram(full_sent_nominalised, "^orang$", "^kebahagiaan$", COLLOCATES, WORDS)
+
+sejati <- coll_cxn_ngram(full_sent_nominalised, "^sejati$", "^kebahagiaan$", COLLOCATES, WORDS)
+
+akhirat <- coll_cxn_ngram(full_sent_nominalised, "^akhirat$", "^kebahagiaan$", COLLOCATES, WORDS)
+
+abadi <- coll_cxn_ngram(full_sent_nominalised, "^abadi$", "^kebahagiaan$", COLLOCATES, WORDS)
+
+hakiki <- coll_cxn_ngram(full_sent_nominalised, "^hakiki$", "^kebahagiaan$", COLLOCATES, WORDS)
+```
+
+```{r n-gram-abadi}
+abadi$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r n-gram-akhirat}
+akhirat$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-hakiki}
+hakiki$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-sejati}
+sejati$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-tangga}
+tangga$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-dunia}
+dunia$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-umat}
+umat$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-manusia}
+manusia$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-orang}
+orang$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+Below is the n-grams for the metaphorical collocates
+
+```{r n-gram-mencapai}
+coll_cxn_ngram(full_sent_nominalised, "^mencapai$", "^kebahagiaan$", COLLOCATES, WORDS)$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-menemukan}
+coll_cxn_ngram(full_sent_nominalised, "^menemukan$", "^kebahagiaan$", COLLOCATES, WORDS)$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-menuju}
+coll_cxn_ngram(full_sent_nominalised, "^menuju$", "^kebahagiaan$", COLLOCATES, WORDS)$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-meraih}
+coll_cxn_ngram(full_sent_nominalised, "^meraih$", "^kebahagiaan$", COLLOCATES, WORDS)$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+
+
+
+# Kolokat khas untuk *kesenangan*
+
+Tabel [\@ref(tab:kolokat-kesenangan)](#kolokat-kesenangan) berikut menampilkan 20 kolokat khas teratas yang kuat berasosiasi dengan *kesenangan*.
+
+
+```{r kolokat-kesenangan, echo = TRUE}
+happyr::mdca_attr(mdca_colloc_concise, cxn_type = "^kesenangan$") %>% 
+  dplyr::top_n(n = 20, wt = assocstr) %>% 
+  dplyr::select(-synonyms) %>%
+  dplyr::mutate(exp = round(exp, 3), 
+                collocates = paste("*", collocates, "*", sep = "")) %>%
+  dplyr::rename(kolokat = collocates,
+                signif = dec) %>% 
+  knitr::kable(caption="Daftar 20 kolokat khas teratas untuk *kesenangan* di Korpus Leipzig Bahasa Indonesia.", row.names = TRUE)
+```
+
+
+
+
+
+
+```{r n-gram-pribadi}
+coll_cxn_ngram(full_sent_nominalised, "^pribadi$", "^kesenangan$", COLLOCATES, WORDS)$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+
+```{r n-gram-kenikmatan}
+coll_cxn_ngram(full_sent_nominalised, "^kenikmatan$", "^kesenangan$", COLLOCATES, WORDS)$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+
+```{r n-gram-duniawi}
+coll_cxn_ngram(full_sent_nominalised, "^duniawi$", "^kesenangan$", COLLOCATES, WORDS)$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-nafsu}
+coll_cxn_ngram(full_sent_nominalised, "^nafsu$", "^kesenangan$", COLLOCATES, WORDS)$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-hawa}
+coll_cxn_ngram(full_sent_nominalised, "^hawa$", "^kesenangan$", COLLOCATES, WORDS)$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-seksual}
+coll_cxn_ngram(full_sent_nominalised, "^seksual$", "^kesenangan$", COLLOCATES, WORDS)$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-dosa}
+coll_cxn_ngram(full_sent_nominalised, "^dosa$", "^kesenangan$", COLLOCATES, WORDS)$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+
+```{r n-gram-kebutuhan}
+coll_cxn_ngram(full_sent_nominalised, "^kebutuhan$", "^kesenangan$", COLLOCATES, WORDS)$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r n-gram-keuntungan}
+coll_cxn_ngram(full_sent_nominalised, "^keuntungan$", "^kesenangan$", COLLOCATES, WORDS)$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-kepentingan}
+coll_cxn_ngram(full_sent_nominalised, "^kepentingan$", "^kesenangan$", COLLOCATES, WORDS)$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-hobi}
+coll_cxn_ngram(full_sent_nominalised, "^hobi$", "^kesenangan$", COLLOCATES, WORDS)$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r n-gram-waktu}
+coll_cxn_ngram(full_sent_nominalised, "^waktu$", "^kesenangan$", COLLOCATES, WORDS)$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+Berikut ini adalah pola kolokasi *kesenangan* dengan kolokat verbal, yang sebagian besar muncul dalam konstruksi metaforis.
+
+```{r n-gram-mencari}
+coll_cxn_ngram(full_sent_nominalised, "^mencari$", "^kesenangan$", COLLOCATES, WORDS)$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r n-gram-mengejar}
+mengejar <- coll_cxn_ngram(full_sent_nominalised, "^mengejar$", "^kesenangan$", COLLOCATES, WORDS)
+mengejar$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r n-gram-mendapat}
+mendapat <- coll_cxn_ngram(full_sent_nominalised, "^mendapat$", "^kesenangan$", COLLOCATES, WORDS)
+mendapat$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r n-gram-berdasarkan}
+berdasarkan <- coll_cxn_ngram(full_sent_nominalised, "^berdasarkan$", "^kesenangan$", COLLOCATES, WORDS)
+berdasarkan$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+
+# Kolokat khas untuk *kegembiraan*
+
+
+Tabel [\@ref(tab:kolokat-kegembiraan)](#kolokat-kegembiraan) berikut menampilkan 20 kolokat khas teratas yang kuat berasosiasi dengan *kegembiraan*.
+
+
+```{r kolokat-kegembiraan, echo = TRUE}
+happyr::mdca_attr(mdca_colloc_concise, cxn_type = "^kegembiraan$") %>% 
+  dplyr::top_n(n = 20, wt = assocstr) %>% 
+  dplyr::select(-synonyms) %>%
+  dplyr::mutate(exp = round(exp, 3), 
+                collocates = paste("*", collocates, "*", sep = "")) %>%
+  dplyr::rename(kolokat = collocates,
+                signif = dec) %>% 
+  knitr::kable(caption="Daftar 20 kolokat khas teratas untuk *kegembiraan* di Korpus Leipzig Bahasa Indonesia.", row.names = TRUE)
+```
+
+```{r n-gram-luapan}
+luapan <- coll_cxn_ngram(full_sent_nominalised, "^luapan$", "^kegembiraan$", COLLOCATES, WORDS)
+luapan$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r n-gram-meluapkan}
+meluapkan <- coll_cxn_ngram(full_sent_nominalised, "^meluapkan$", "^kegembiraan$", COLLOCATES, WORDS)
+meluapkan$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-dihati}
+dihati <- coll_cxn_ngram(full_sent_nominalised, "^dihati$", "^kegembiraan$", COLLOCATES, WORDS)
+dihati$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r n-gram-larut}
+larut <- coll_cxn_ngram(full_sent_nominalised, "^larut$", "^kegembiraan$", COLLOCATES, WORDS)
+larut$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-menyambut}
+menyambut <- coll_cxn_ngram(full_sent_nominalised, "^menyambut$", "^kegembiraan$", COLLOCATES, WORDS)
+menyambut$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-menyatakan-menyaksikan}
+menyatakan <- coll_cxn_ngram(full_sent_nominalised, "^(menyatakan|menyaksikan)$", "^kegembiraan$", COLLOCATES, WORDS)
+menyatakan$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r n-gram-kubu}
+kubu <- coll_cxn_ngram(full_sent_nominalised, "^kubu$", "^kegembiraan$", COLLOCATES, WORDS)
+kubu$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r full-sent-kubu}
+full_sent_nominalised %>% filter(COLLOCATES=="kubu", WORDS=="kegembiraan") %>% pull(MATCHED_SENTENCE)
+```
+
+```{r n-gram-pendukung}
+pendukung <- coll_cxn_ngram(full_sent_nominalised, "^pendukung$", "^kegembiraan$", COLLOCATES, WORDS)
+pendukung$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r full-sent-pendukung}
+full_sent_nominalised %>% filter(COLLOCATES=="pendukung", WORDS=="kegembiraan") %>% pull(MATCHED_SENTENCE)
+```
+
+```{r n-gram-gol}
+gol <- coll_cxn_ngram(full_sent_nominalised, "^gol$", "^kegembiraan$", COLLOCATES, WORDS)
+gol$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-tim}
+tim <- coll_cxn_ngram(full_sent_nominalised, "^tim$", "^kegembiraan$", COLLOCATES, WORDS)
+tim$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-pemain}
+pemain <- coll_cxn_ngram(full_sent_nominalised, "^pemain$", "^kegembiraan$", COLLOCATES, WORDS)
+pemain$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r n-gram-warga}
+warga <- coll_cxn_ngram(full_sent_nominalised, "^warga$", "^kegembiraan$", COLLOCATES, WORDS)
+warga$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r n-gram-masyarakat}
+masyarakat <- coll_cxn_ngram(full_sent_nominalised, "^masyarakat$", "^kegembiraan$", COLLOCATES, WORDS)
+masyarakat$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-belanda}
+belanda <- coll_cxn_ngram(full_sent_nominalised, "^belanda$", "^kegembiraan$", COLLOCATES, WORDS)
+belanda$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r n-gram-menyaksikan}
+menyaksikan <- coll_cxn_ngram(full_sent_nominalised, "^menyaksikan$", "^kegembiraan$", COLLOCATES, WORDS)
+menyaksikan$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-menyatakan}
+menyatakan <- coll_cxn_ngram(full_sent_nominalised, "^menyatakan$", "^kegembiraan$", COLLOCATES, WORDS)
+menyatakan$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-terlihat}
+terlihat <- coll_cxn_ngram(full_sent_nominalised, "^terlihat$", "^kegembiraan$", COLLOCATES, WORDS)
+terlihat$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-kesedihan}
+kesedihan <- coll_cxn_ngram(full_sent_nominalised, "^kesedihan$", "^kegembiraan$", COLLOCATES, WORDS)
+kesedihan$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+# Kolokat khas untuk *keceriaan*
+
+Tabel [\@ref(tab:kolokat-keceriaan)](#kolokat-keceriaan) berikut menampilkan 20 kolokat khas teratas yang kuat berasosiasi dengan *keceriaan*.
+
+
+```{r kolokat-keceriaan, echo = TRUE}
+happyr::mdca_attr(mdca_colloc_concise, cxn_type = "^keceriaan$") %>% 
+  dplyr::top_n(n = 20, wt = assocstr) %>% 
+  dplyr::select(-synonyms) %>%
+  dplyr::mutate(exp = round(exp, 3), 
+                collocates = paste("*", collocates, "*", sep = "")) %>%
+  dplyr::rename(kolokat = collocates,
+                signif = dec) %>% 
+  knitr::kable(caption="Daftar 20 kolokat khas teratas untuk *keceriaan* di Korpus Leipzig Bahasa Indonesia.", row.names = TRUE)
+```
+
+
+```{r n-gram-anak-anak}
+anakanak <- coll_cxn_ngram(full_sent_nominalised, "^anak\\-anak$", "^keceriaan$", COLLOCATES, WORDS)
+anakanak$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r n-gram-anak}
+anak <- coll_cxn_ngram(full_sent_nominalised, "^anak$", "^keceriaan$", COLLOCATES, WORDS)
+anak$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r n-gram-mengembalikan}
+mengembalikan <- coll_cxn_ngram(full_sent_nominalised, "^mengembalikan$", "^keceriaan$", COLLOCATES, WORDS)
+mengembalikan$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r sent-mengembalikan}
+sent_mengembalikan <- full_sent_nominalised %>% filter(COLLOCATES=="mengembalikan", WORDS=="keceriaan") %>% pull(MATCHED_SENTENCE)
+
+sent_mengembalikan
+```
+
+
+```{r n-gram-korban}
+korban <- coll_cxn_ngram(full_sent_nominalised, "^korban$", "^keceriaan$", COLLOCATES, WORDS)
+korban$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r sent-korban}
+sent_korban <- full_sent_nominalised %>% filter(COLLOCATES=="korban", WORDS=="keceriaan") %>% pull(MATCHED_SENTENCE)
+
+sent_korban
+```
+
+
+```{r n-gram-penuh}
+penuh <- coll_cxn_ngram(full_sent_nominalised, "^penuh$", "^keceriaan$", COLLOCATES, WORDS)
+penuh$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+
+```
+
+
+```{r n-gram-menambah}
+menambah <- coll_cxn_ngram(full_sent_nominalised, "^menambah$", "^keceriaan$", COLLOCATES, WORDS)
+menambah$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+
+```
+
+
+```{r n-gram-terpancar}
+terpancar <- coll_cxn_ngram(full_sent_nominalised, "^terpancar$", "^keceriaan$", COLLOCATES, WORDS)
+terpancar$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+
+```
+
+
+```{r n-gram-menghiasi}
+menghiasi <- coll_cxn_ngram(full_sent_nominalised, "^menghiasi$", "^keceriaan$", COLLOCATES, WORDS)
+menghiasi$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r sent-menghiasi}
+sent_menghiasi <- full_sent_nominalised %>% filter(COLLOCATES=="menghiasi", WORDS=="keceriaan") %>% pull(MATCHED_SENTENCE)
+
+sent_menghiasi
+
+# percentage of "face" as DO for "menghiasi"
+round(6/7*100, 2)
+```
+
+
+
+
+```{r n-gram-mewarnai}
+mewarnai <- coll_cxn_ngram(full_sent_nominalised, "^mewarnai$", "^keceriaan$", COLLOCATES, WORDS)
+mewarnai$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r sent-mewarnai}
+sent_mewarnai <- full_sent_nominalised %>% filter(COLLOCATES=="mewarnai", WORDS=="keceriaan") %>% pull(MATCHED_SENTENCE)
+
+sent_mewarnai
+```
+
+
+
+
+```{r n-gram-warna}
+warna <- coll_cxn_ngram(full_sent_nominalised, "^warna$", "^keceriaan$", COLLOCATES, WORDS)
+warna$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+# Kolokat khas untuk *keriangan*
+
+Tabel [\@ref(tab:kolokat-keriangan)](#kolokat-keriangan) berikut menampilkan 20 kolokat khas teratas yang kuat berasosiasi dengan *keriangan*.
+
+
+```{r kolokat-keriangan, echo = TRUE}
+happyr::mdca_attr(mdca_colloc_concise, cxn_type = "^keriangan$") %>% 
+  dplyr::top_n(n = 20, wt = assocstr) %>% 
+  dplyr::select(-synonyms) %>%
+  dplyr::mutate(exp = round(exp, 3), 
+                collocates = paste("*", collocates, "*", sep = "")) %>%
+  dplyr::rename(kolokat = collocates,
+                signif = dec) %>% 
+  knitr::kable(caption="Daftar 20 kolokat khas teratas untuk *keriangan* di Korpus Leipzig Bahasa Indonesia.", row.names = TRUE)
+```
+
+```{r n-gram-riang-penuh}
+riang_penuh <- coll_cxn_ngram(full_sent_nominalised, "^penuh$", "^keriangan$", COLLOCATES, WORDS)
+riang_penuh$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r n-gram-riang-KANAK-BOCAH-ANAK-ANAK}
+riang_ANAK <- coll_cxn_ngram(full_sent_nominalised, "^(kanak-kanak|anak-anak|bocah)$", "^keriangan$", COLLOCATES, WORDS)
+riang_ANAK$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-riang-TULUS-KONYOL-SERONOK}
+riang_TulusKonyolSeronok <- coll_cxn_ngram(full_sent_nominalised, "^(ketulusan|kekonyolan|keseronokan)$", "^keriangan$", COLLOCATES, WORDS)
+riang_TulusKonyolSeronok$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r sent-TULUS-KONYOL-SERONOK}
+sent_TulusKonyolSeronok <- full_sent_nominalised %>% filter(COLLOCATES %in% c("ketulusan", "kekonyolan", "keseronokan"), WORDS=="keriangan") %>% pull(MATCHED_SENTENCE)
+sent_TulusKonyolSeronok
+```
+
+
+
+```{r n-gram-memancarkan}
+memancarkan <- coll_cxn_ngram(full_sent_nominalised, "^memancarkan$", "^keriangan$", COLLOCATES, WORDS)
+memancarkan$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r sent-memancarkan}
+full_sent_nominalised %>% filter(COLLOCATES %in% c("memancarkan"), WORDS=="keriangan") %>% pull(MATCHED_SENTENCE)
+```
+
+
+
+```{r n-gram-hilang}
+hilang <- coll_cxn_ngram(full_sent_nominalised, "^hilang$", "^keriangan$", COLLOCATES, WORDS)
+hilang$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r n-gram-politik}
+politik <- coll_cxn_ngram(full_sent_nominalised, "^politik$", "^keriangan$", COLLOCATES, WORDS)
+politik$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r sent-imajinasi}
+sent_imajinasi <- full_sent_nominalised %>% filter(COLLOCATES=="imajinasi", WORDS=="keriangan") %>% pull(MATCHED_SENTENCE)
+
+sent_imajinasi
+```
+
+
+
+```{r sent-politik}
+sent_politik <- full_sent_nominalised %>% filter(COLLOCATES=="politik", WORDS=="keriangan") %>% pull(MATCHED_SENTENCE)
+
+sent_politik
+```
+
+
+
+```{r n-gram-menggambarkan}
+menggambarkan <- coll_cxn_ngram(full_sent_nominalised, "^menggambarkan$", "^keriangan$", COLLOCATES, WORDS)
+menggambarkan$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r sent-menggambarkan}
+full_sent_nominalised %>% filter(COLLOCATES=="menggambarkan", WORDS=="keriangan") %>% pull(MATCHED_SENTENCE)
+```
+
+
+```{r n-gram-menunjukkan}
+menunjukkan <- coll_cxn_ngram(full_sent_nominalised, "^menunjukkan$", "^keriangan$", COLLOCATES, WORDS)
+menunjukkan$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r sent-menunjukkan}
+full_sent_nominalised %>% filter(COLLOCATES=="menunjukkan", WORDS=="keriangan") %>% pull(MATCHED_SENTENCE)
+```
+
+
+```{r n-gram-mendengar}
+mendengar <- coll_cxn_ngram(full_sent_nominalised, "^mendengar$", "^keriangan$", COLLOCATES, WORDS)
+mendengar$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+```{r sent-mendengar}
+full_sent_nominalised %>% filter(COLLOCATES=="mendengar", WORDS=="keriangan") %>% pull(MATCHED_SENTENCE)
+```
+
+
+
+```{r n-gram-berbalut}
+berbalut <- coll_cxn_ngram(full_sent_nominalised, "^berbalut$", "^keriangan$", COLLOCATES, WORDS)
+berbalut$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+```{r sent-berbalut}
+sent_berbalut <- full_sent_nominalised %>% filter(COLLOCATES=="berbalut", WORDS=="keriangan") %>% pull(MATCHED_SENTENCE)
+
+sent_berbalut
+```
+
+```{r sent-kejayaan}
+sent_kejayaan <- full_sent_nominalised %>% filter(COLLOCATES=="kejayaan", WORDS=="keriangan") %>% pull(MATCHED_SENTENCE)
+
+sent_kejayaan
+```
+
+
+```{r n-gram-mengajar}
+mengajar <- coll_cxn_ngram(full_sent_nominalised, "^mengajar$", "^keriangan$", COLLOCATES, WORDS)
+mengajar$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
+```
+
+
+# Daftar pustaka
