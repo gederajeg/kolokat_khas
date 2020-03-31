@@ -30,7 +30,7 @@ Data dan R Notebook ini berlisensi [*Creative Commons Attribution-NonCommercial-
 [cc-by-nc-sa-shield]: https://img.shields.io/badge/lisensi-CC%20BY--NC--SA%204.0-informational.svg
 
 <!-- badges: end -->
-Repositori ini merupakan [RStudio Project](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) [lihat @wickham_r_2017, Bab 8] untuk makalah yang sedang menjalani proses "tinjauan sejawat" [*peer-review*] di jurnal [*Linguistik Indonesia*](http://ojs.linguistik-indonesia.org/index.php/linguistik_indonesia)) [untuk naskah *pre-print*, lihat @Rajeg2020]. Struktur R Project ini berisi data dan [R Markdown Notebook](https://rmarkdown.rstudio.com/lesson-10.html).
+Repositori ini merupakan [RStudio Project](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) [lihat @wickham_r_2017, Bab 8] untuk makalah yang sedang menjalani proses "tinjauan sejawat"/*peer-review* di jurnal [*Linguistik Indonesia*](http://ojs.linguistik-indonesia.org/index.php/linguistik_indonesia)) [untuk naskah *pre-print*, lihat @Rajeg2020]. Struktur R Project ini berisi data dan [R Markdown Notebook](https://rmarkdown.rstudio.com/lesson-10.html).
 
 Data utama makalah ini berasal dari modul R [*happyr*](https://gederajeg.github.io/happyr/) [@happyr2019] yang merupakan material pendamping dari tesis PhD penulis tentang metafora sinonim KEBAHAGIAAN Bahasa Indonesia [@rajeg_metaphorical_2019].
 

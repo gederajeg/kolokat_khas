@@ -24,8 +24,8 @@ BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](https://crea
 Repositori ini merupakan [RStudio
 Project](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
 (lihat Wickham & Grolemund [2017](#ref-wickham_r_2017), Bab 8) untuk
-makalah yang sedang menjalani proses “tinjauan sejawat”
-\[*peer-review*\] di jurnal [*Linguistik
+makalah yang sedang menjalani proses “tinjauan sejawat”/*peer-review* di
+jurnal [*Linguistik
 Indonesia*](http://ojs.linguistik-indonesia.org/index.php/linguistik_indonesia))
 (untuk naskah *pre-print*, lihat Rajeg [2020](#ref-Rajeg2020)). Struktur
 R Project ini berisi data dan [R Markdown
@@ -74,9 +74,8 @@ near-synonyms: A corpus-based study of indonesian words for happiness"*.
 <div id="ref-rajeg_metaphorical_2019">
 
 Rajeg, Gede Primahadi Wijaya. 2019b. *Metaphorical profiles and
-near-synonyms: A corpus-based study of indonesian words for \<span
-style="font-variant:Small-caps;"\>happiness\</span\>*. Clayton, VIC:
-Monash University, Australia PhD thesis.
+near-synonyms: A corpus-based study of indonesian words for happiness*.
+Clayton, VIC: Monash University, Australia PhD thesis.
 <https://doi.org10.26180/5cac231a97fb1>.
 
 </div>
@@ -84,7 +83,7 @@ Monash University, Australia PhD thesis.
 <div id="ref-Rajeg2020">
 
 Rajeg, Gede Primahadi Wijaya. 2020. Linguistik Korpus Kuantitatif dan
-Kajian Semantik Leksikal Sinonim Emosi Bahasa Indonesia.
+Kajian Semantik Leksikal Sinonim Emosi Bahasa Indonesia. Pre-print.
 <https://doi.org10.6084/m9.figshare.12012369.v1>.
 
 </div>
