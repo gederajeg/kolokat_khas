@@ -27,9 +27,31 @@ Project](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
 makalah yang sedang menjalani proses “tinjauan sejawat”/*peer-review* di
 jurnal [*Linguistik
 Indonesia*](http://ojs.linguistik-indonesia.org/index.php/linguistik_indonesia)
-(untuk naskah *preprint*, lihat Rajeg [2020](#ref-Rajeg2020)). Struktur
-R Project ini berisi data dan [R Markdown
+(untuk naskah *preprint*, lihat Rajeg
+[2020](#ref-Rajeg2020)[a](#ref-Rajeg2020)). Struktur R Project ini
+berisi data dan [R Markdown
 Notebook](https://rmarkdown.rstudio.com/lesson-10.html).
+
+Apabila Anda menggunakan data dan/atau R code dalam repositori ini,
+selain mengutip makalah aslinya, berikut ini sitiran terkait (dengan
+gaya *Unified Style Sheet for Linguistics*) yang perlu dikutip dalam
+makalah/presentasi/publikasi Anda:
+
+  - Rajeg, Gede Primahadi Wijaya. 2020. Data dan R Notebook untuk
+    *Linguistik korpus kuantitatif dan kajian semantik leksikal sinonim
+    emosi bahasa Indonesia*. figshare.
+    <https://doi.org/10.6084/m9.figshare.12073065.v1>.
+
+  - Rajeg, Gede Primahadi Wijaya. 2019. happyr: The accompanying R
+    package for Rajeg’s (2019) PhD thesis titled “Metaphorical profiles
+    and near-synonyms: A corpus-based study of Indonesian words for
+    Happiness.” R. <https://doi.org/10.26180/5be404d6336da>.
+    <https://gederajeg.github.io/happyr>.
+
+  - Rajeg, Gede Primahadi Wijaya. 2019. Metaphorical profiles and
+    near-synonyms: A corpus-based study of Indonesian words for
+    happiness. Clayton, VIC: Monash University, Australia PhD thesis.
+    <https://doi.org/10.26180/5cac231a97fb1>.
 
 Data utama makalah ini berasal dari modul R
 [*happyr*](https://gederajeg.github.io/happyr/) (Rajeg
@@ -38,7 +60,9 @@ pendamping dari tesis PhD penulis tentang metafora sinonim KEBAHAGIAAN
 Bahasa Indonesia (Rajeg
 [2019](#ref-rajeg_metaphorical_2019)[b](#ref-rajeg_metaphorical_2019)).
 
-Folder `data` dalam repositori ini berisi database tambahan untuk:
+Folder `data` dalam repositori ini (Rajeg
+[2020](#ref-rajeg_data_2020)[b](#ref-rajeg_data_2020)) berisi database
+tambahan untuk:
 
 1.  sitiran kalimat penuh di mana kolokat dari sinonim KEBAHAGIAAN yang
     dikaji muncul
@@ -48,12 +72,15 @@ Folder `data` dalam repositori ini berisi database tambahan untuk:
 3.  tabel ukuran jumlah kata masing-masing korpus Bahasa Indonesia
     Leipzig yang digunakan, dan
 4.  frekuensi kemunculan sinonim KEBAHAGIAAN yang dikaji
+5.  luaran lengkap dari MDCA terhadap semua kolokat dan sinonimnya
+    (nominalisasi dan akar kata)
 
 Berkas-berkas data tersebut terintegrasi dengan R Markdown Notebook yang
 berisi kode pemrograman R (R Core Team [2020](#ref-rcore2020)) yang
-digunakan untuk analisis dalam makalah. Modul R lain yang mesti
-di-install untuk menjalankan semua kode dalam R Notebook tersebut ialah
-[*tidyverse*](https://www.tidyverse.org) (Wickham et al.
+digunakan untuk analisis dalam makalah ini (Rajeg
+[2020](#ref-rajeg_data_2020)[b](#ref-rajeg_data_2020)). Modul R lain
+yang mesti di-install untuk menjalankan semua kode dalam R Notebook
+tersebut ialah [*tidyverse*](https://www.tidyverse.org) (Wickham et al.
 [2019](#ref-wickham_welcome_2019)), dan aplikasi pendamping R, yaitu
 [RStudio](https://rstudio.com).
 
@@ -82,9 +109,18 @@ Clayton, VIC: Monash University, Australia PhD thesis.
 
 <div id="ref-Rajeg2020">
 
-Rajeg, Gede Primahadi Wijaya. 2020. Linguistik Korpus Kuantitatif dan
+Rajeg, Gede Primahadi Wijaya. 2020a. Linguistik Korpus Kuantitatif dan
 Kajian Semantik Leksikal Sinonim Emosi Bahasa Indonesia. Preprint.
 <https://doi.org10.6084/m9.figshare.12012369.v1>.
+
+</div>
+
+<div id="ref-rajeg_data_2020">
+
+Rajeg, Gede Primahadi Wijaya. 2020b. Data dan r notebook untuk
+*Linguistik korpus kuantitatif dan kajian semantik leksikal sinonim
+emosi bahasa indonesia*. *figshare*.
+<https://doi.org10.6084/m9.figshare.12073065.v1>.
 
 </div>
 
