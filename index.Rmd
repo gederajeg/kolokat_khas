@@ -2,7 +2,13 @@
 title: "R Notebook untuk *Linguistik Korpus Kuantitatif dan Kajian Semantik Leksikal Sinonim Emosi Bahasa Indonesia*"
 author: 'Gede Primahadi Wijaya <span style = "font-variant:small-caps;">Rajeg</span> <a itemprop="sameAs" content="https://orcid.org/0000-0002-2047-8621" href="https://orcid.org/0000-0002-2047-8621" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon"></a>'
 output:
-  html_notebook: default
+  html_notebook:
+    number_sections: yes
+    toc: yes
+    toc_float: yes
+    fig_caption: yes
+    fig_width: 6
+    fig_retina: 2
   word_document: default
   bookdown::word_document2:
     fig_caption: true
@@ -20,7 +26,11 @@ Naskah preprint: [![DOI](https://img.shields.io/badge/doi-10.6084/m9.figshare.12
 [cc-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/
 [cc-by-nc-sa-shield]: https://img.shields.io/badge/lisensi-CC%20BY--NC--SA%204.0-informational.svg
 
-Makalah sedang menjalani proses "tinjauan sejawat"/*peer-review* di jurnal [*Linguistik Indonesia*](http://ojs.linguistik-indonesia.org/index.php/linguistik_indonesia)
+# Cara menyitir/mengutip R Notebook dan data makalah ini:
+
+Daftar Pustaka:
+
+> Rajeg, Gede Primahadi Wijaya (2020): Data dan R Notebook untuk *Linguistik Korpus Kuantitatif dan Kajian Semantik Leksikal Sinonim Emosi Bahasa Indonesia*. figshare. Dataset. https://doi.org/10.6084/m9.figshare.12073065
 
 ```{r, message = FALSE, warning = FALSE, eval = FALSE}
 library(remotes) # if 'remotes' package is not available, install it by typing: install.packages("remotes")
@@ -30,7 +40,7 @@ remotes::install_github("gederajeg/happyr")
 
 # Kode analisis MDCA
 
-Nukilan kode berikut menunjukkan penghitungan *Multiple Distinctive Collexeme Analysis* menggunakan fungsi `mdca()` dan data kolokat dari modul R *happyr* [@happyr2019]. Perlu dicatat bahwa pengguna dan pembaca perlu juga menginstal modul *happyr* (lihat nukilan kode sebelumnya) dan modul *tidyverse* [@wickham_welcome_2019] untuk dapat menjalankan kode analisis berikut.
+Nukilan kode berikut menunjukkan penghitungan *Multiple Distinctive Collexeme Analysis* menggunakan fungsi `mdca()` dan data kolokat dari modul R *happyr* [@happyr2019]. Perlu dicatat bahwa pengguna dan pembaca perlu juga menginstal modul *happyr* (lihat nukilan kode sebelumnya) dan modul *tidyverse* [@wickham_welcome_2019] untuk dapat menjalankan kode analisis berikut. Data lain untuk makalah ini beserta R Notebook-nya juga tersedia secara terbuka [@rajeg_data_2020].
 
 ```{r mdca-for-collocates, message = FALSE, warning = FALSE}
 library(happyr)
@@ -171,8 +181,17 @@ sample_n(colldb_snippet, 5)
 ```
 
 
+# HASIL DAN PEMBAHASAN
 
-# Kolokat khas untuk *kebahagiaan*
+## Luaran MDCA untuk semua kolokat dan sinonim (nominalisasi dan akar kata)
+
+```{r all-results-mdca}
+mdca_colloc
+```
+
+
+
+## Kolokat khas untuk *kebahagiaan*
 
 Tabel [\@ref(tab:kolokat-kebahagiaan)](#kolokat-kebahagiaan) berikut menampilkan 20 kolokat khas teratas yang kuat berasosiasi dengan *kebahagiaan*.
 
@@ -274,7 +293,7 @@ coll_cxn_ngram(full_sent_nominalised, "^meraih$", "^kebahagiaan$", COLLOCATES, W
 
 
 
-# Kolokat khas untuk *kesenangan*
+## Kolokat khas untuk *kesenangan*
 
 Tabel [\@ref(tab:kolokat-kesenangan)](#kolokat-kesenangan) berikut menampilkan 20 kolokat khas teratas yang kuat berasosiasi dengan *kesenangan*.
 
@@ -377,7 +396,7 @@ berdasarkan$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
 
 
 
-# Kolokat khas untuk *kegembiraan*
+## Kolokat khas untuk *kegembiraan*
 
 
 Tabel [\@ref(tab:kolokat-kegembiraan)](#kolokat-kegembiraan) berikut menampilkan 20 kolokat khas teratas yang kuat berasosiasi dengan *kegembiraan*.
@@ -499,7 +518,7 @@ kesedihan$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
 ```
 
 
-# Kolokat khas untuk *keceriaan*
+## Kolokat khas untuk *keceriaan*
 
 Tabel [\@ref(tab:kolokat-keceriaan)](#kolokat-keceriaan) berikut menampilkan 20 kolokat khas teratas yang kuat berasosiasi dengan *keceriaan*.
 
@@ -610,7 +629,7 @@ warna <- coll_cxn_ngram(full_sent_nominalised, "^warna$", "^keceriaan$", COLLOCA
 warna$colloc_cxn_pattern %>% knitr::kable(row.names = TRUE)
 ```
 
-# Kolokat khas untuk *keriangan*
+## Kolokat khas untuk *keriangan*
 
 Tabel [\@ref(tab:kolokat-keriangan)](#kolokat-keriangan) berikut menampilkan 20 kolokat khas teratas yang kuat berasosiasi dengan *keriangan*.
 
